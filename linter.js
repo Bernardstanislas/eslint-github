@@ -15,6 +15,7 @@ function lint(data) {
     Object.keys(files).map(function(filename) {
         filesString += filename + ' ';
     });
+    console.log('Files to lint : ', filesString);
     var child = exec('cd repo && eslint --format node_modules/eslint-json/json.js ' + filesString + ' > output.json');
     child.on('close', function() {
         var result = require('./repo/output.json');
@@ -24,8 +25,10 @@ function lint(data) {
 }
 
 function npmInstall(data) {
+    console.log('Starting npm install');
     var child = exec('cd repo && npm install eslint-json && npm install');
     child.on('close', function() {
+        console.log('Npm install done');
         lint(data);
     });
 }
