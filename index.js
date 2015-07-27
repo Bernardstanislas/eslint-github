@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
 
+var linter = require('./linter.js');
 
 // Be able to parse POST requests
 
@@ -23,7 +24,7 @@ app.get('/ping', function (req, res) {
 // Respond to Github webhook
 
 app.post('/', function(req, res) {
-    console.log(req.body);
+    linter.onPush(req.body);
     res.end('ok');
 });
 
