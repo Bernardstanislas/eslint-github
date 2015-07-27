@@ -1,23 +1,24 @@
 {
-  "name": "eslint-github",
-  "version": "0.0.1",
-  "description": "Automatic linting for github projects",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Bernardstanislas/eslint-github.git"
-  },
-  "author": "Stanislas Bernard",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Bernardstanislas/eslint-github/issues"
-  },
-  "homepage": "https://github.com/Bernardstanislas/eslint-github",
-  "dependencies": {
-    "express": "^4.13.1",
-    "request": "^2.60.0"
-  }
+    "name": "eslint-github",
+    "version": "0.0.1",
+    "description": "Automatic linting for github projects",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Bernardstanislas/eslint-github.git"
+    },
+    "author": "Stanislas Bernard",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Bernardstanislas/eslint-github/issues"
+    },
+    "homepage": "https://github.com/Bernardstanislas/eslint-github",
+    "dependencies": {
+        "express": "^4.13.1",
+        "request": "^2.60.0"
+    }
 }
