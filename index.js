@@ -1,16 +1,33 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser')
+
+
+// Be able to parse POST requests
+
+app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+// Get the port from heroku
 
 app.set('port', (process.env.PORT || 8080));
+
+// Respond to a ping
 
 app.get('/ping', function (req, res) {
     res.send('pong');
 });
 
+// Respond to Github webhook
+
 app.post('/', function(req, res) {
-    console.log(req);
+    console.log(req.body);
     res.end('ok');
 });
+
+// Start server
 
 var server = app.listen(app.get('port'), function () {
     var host = server.address().address;
