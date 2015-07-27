@@ -24,6 +24,7 @@ app.get('/ping', function (req, res) {
 // Respond to Github webhook
 
 app.post('/', function(req, res) {
+    console.log(req.body);
     if (req.body.res === 'refs/heads/changes') {
         console.log('Push event');
         linter.onPush(req.body);
