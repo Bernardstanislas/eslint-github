@@ -7,6 +7,11 @@ app.get('/ping', function (req, res) {
     res.send('pong');
 });
 
+app.post('/', function(req, res) {
+    console.log(req);
+    res.end('ok');
+});
+
 var server = app.listen(app.get('port'), function () {
     var host = server.address().address;
     var port = server.address().port;
