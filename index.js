@@ -26,7 +26,7 @@ app.get('/ping', function (req, res) {
 app.post('/', function(req, res) {
     linter.onPush(req.body);
     var fs = require('fs');
-    fs.writeFile("/tmp/test", JSON.stringify(req.body), function() {});
+    fs.writeFile("./test.json", JSON.stringify(req.body), function() {});
     res.end('ok');
 });
 
