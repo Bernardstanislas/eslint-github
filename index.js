@@ -24,11 +24,9 @@ app.get('/ping', function (req, res) {
 // Respond to Github webhook
 
 app.post('/', function(req, res) {
-    console.log(req.body);
-    if (req.body.res === 'refs/heads/changes') {
-        console.log('Push event');
-        linter.onPush(req.body);
-    }
+    linter.onPush(req.body);
+    var fs = require('fs');
+    fs.writeFile("/tmp/test", JSON.stringify(req.body), function() {});
     res.end('ok');
 });
 

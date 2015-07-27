@@ -16,7 +16,7 @@ function lint(data) {
         filesString += filename + ' ';
     });
     console.log('Files to lint : ', filesString);
-    var child = exec('cd repo && eslint --format node_modules/eslint-json/json.js ' + filesString + ' > output.json');
+    var child = exec('cd ' + data.repository.name + ' && eslint --format node_modules/eslint-json/json.js ' + filesString + ' > output.json');
     child.on('close', function() {
         var result = require('./repo/output.json');
         console.log('SUCCESS');
@@ -26,7 +26,7 @@ function lint(data) {
 
 function npmInstall(data) {
     console.log('Starting npm install');
-    var child = exec('cd repo && npm install eslint-json && npm install');
+    var child = exec('cd ' + data.repository.name + ' && npm install eslint-json && npm install');
     child.on('close', function() {
         console.log('Npm install done');
         lint(data);
@@ -35,7 +35,7 @@ function npmInstall(data) {
 
 var linter = {
     onPush: function(data) {
-        clone(data.repository.git_url, "repo", null)
+        clone(data.repository.html_url + '.git', './', null)
         .then(function(repo) {
             return repo.getCommit(data.head_commit.id);
         })
