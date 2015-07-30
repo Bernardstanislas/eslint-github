@@ -11,9 +11,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// Get the port from heroku
+// Get the port and address
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.OPENSHIFT_NODEJS_PORT || 8080));
+app.set('address', (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'));
 
 // Respond to a ping
 
